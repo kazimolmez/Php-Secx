@@ -1,17 +1,62 @@
 <?php
 
-if(isset($_REQUEST)){
-	$inj = array('select', 'insert', 'delete', 'update','drop table', 'union', 'null','order by','order+by','from','version','database','tables','query','<','>','<script','/>');
-	for ($i = 0; $i < sizeof($_REQUEST); ++$i){
-		for ($j = 0; $j < sizeof($inj); ++$j){
-			foreach($_REQUEST as $gets){
-				if(preg_match (',' . $inj[$j] . ',', strtolower($gets))){
-					$temp = key($_REQUEST);
-					exit('illegal attack!');
+/**
+* Class name : Php Secx
+* Description: Basic php scripts security for xss attacks and sql inj.
+* Author     : Kazım Ölmez
+* Web site   : www.kazimolmez.com
+* Version    : 1
+*/
+
+class Php_secx
+{
+	
+	function full_secx()
+	{
+		if(isset($_REQUEST)){
+			$dis = array('select', 'insert', 'delete', 'update','drop table', 'union', 'null','order by','order+by','from','version','database','tables','query','<','>','<script','/>');
+			for ($i = 0; $i < sizeof($_REQUEST); ++$i){
+				for ($j = 0; $j < sizeof($dis); ++$j){
+					foreach($_REQUEST as $gets){
+						if(preg_match (',' . $dis[$j] . ',', strtolower($gets))){
+							exit('illegal attack!');
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public function get_secx()
+	{
+		if(isset($_GET)){
+			$dis = array('select', 'insert', 'delete', 'update','drop table', 'union', 'null','order by','order+by','from','version','database','tables','query','<','>','<script','/>');
+			for ($i = 0; $i < sizeof($_GET); ++$i){
+				for ($j = 0; $j < sizeof($dis); ++$j){
+					foreach($_GET as $gets){
+						if(preg_match (',' . $dis[$j] . ',', strtolower($gets))){
+							exit('illegal attack!');
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public function post_secx()
+	{
+		if(isset($_POST)){
+			$dis = array('select', 'insert', 'delete', 'update','drop table', 'union', 'null','order by','order+by','from','version','database','tables','query','<','>','<script','/>');
+			for ($i = 0; $i < sizeof($_POST); ++$i){
+				for ($j = 0; $j < sizeof($dis); ++$j){
+					foreach($_POST as $gets){
+						if(preg_match (',' . $dis[$j] . ',', strtolower($gets))){
+							exit('illegal attack!');
+						}
+					}
 				}
 			}
 		}
 	}
 }
-
 ?>
