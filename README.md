@@ -1,4 +1,4 @@
-# php-security-xss-sql-
+# php-security-xss-sql
 php scripts security for xss attacks and sql injections.
 
 example php file:
